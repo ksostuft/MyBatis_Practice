@@ -90,7 +90,7 @@
                          DISCOUNT_RATE = '1000'
                      </when>
                      <when test="option == 'newProduct'">
-                         PRODUCT_NAME LIKE CONCAT('%', #{value}, '%')
+                         RELEASE_DATE >
                      </when>
                      <when test="option == 'nonProduction'">
                          PRODUCT_NAME LIKE CONCAT('%', #{value}, '%')
