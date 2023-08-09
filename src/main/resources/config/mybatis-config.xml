@@ -6,9 +6,9 @@
     <!-- 주석을 지우고 mybatis 설정 파일 내용을 작성하세요. -->
 
     <!-- SqlMappers는 가명이다. 나중에 바꿀 수 있다.-->
-    <typeAliases>
-        <typeAlias type="com.management.product.model.dao.ProductDAO.xml" alias="SqlMappers" />
-    </typeAliases>
+   <!-- <typeAliases>
+        <typeAlias type="com.management.product.model.dao.ProductDAO" alias="SqlMappers" />
+    </typeAliases>-->
 
     <environments default="dev">
         <environment id="dev">
@@ -17,9 +17,11 @@
                 <property name="driver" value="${driver}"/>
                 <property name="url" value="${url}"/>
                 <property name="username" value="${username}"/>
-                <property name="passsword" value="${password}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </environment>
     </environments>
-
+    <mappers>
+        <package name="com.management.product.model.dao" />
+    </mappers>
 </configuration>

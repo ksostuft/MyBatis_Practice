@@ -14,7 +14,10 @@ public class ProductPrint {
 
         // 1. 전체 조회한 목록 출력하는 메소드
         //    (조건) List<ProductDTO>로 받아온 데이터 목록을 전체 출력하세요.
-
+        List<ProductDTO> productList = allProductList;
+        for(ProductDTO productDTO : productList) {
+            System.out.println(productDTO);
+        }
     }
 
     public void printProductList(List<ProductDTO> productList, SearchCondition searchCondition) {
@@ -22,6 +25,11 @@ public class ProductPrint {
         // 2. 조건에 따라 조회한 목록을 출력하는 메소드
         //    (조건 1) SearchCondition 객체로 검색 조건이 무엇인지 출력하세요.
         //    (조건 2) List<ProductDTO>로 받아온 데이터 목록을 전체 출력하세요.
+        System.out.println("검색 조건: " + searchCondition);
+        List<ProductDTO> productSelectedList = productList;
+        for(ProductDTO productDTO : productSelectedList) {
+            System.out.println(productDTO);
+        }
 
     }
 
@@ -36,7 +44,13 @@ public class ProductPrint {
 
         // 4. 에러메시지를 출력하는 메소드
         //    (조건) 에러코드를 전달받아 에러를 알리는 메시지를 출력하세요.
-
+        switch (errorCode) {
+            case "selectList":
+                System.out.println("전체 목록을 출력하는데 실패했습니다.");
+                break;
+            case "selectOne":
+                System.out.println("검색에 맞는 결과를 찾는데 실패했습니다.");
+        }
     }
 
 }
