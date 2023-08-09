@@ -29,6 +29,7 @@ public class CategoryMenu {
 
             switch (selectMenu) {
                 case 1 : categoryController.selectCategoryList(inputSelectOption(selectMenu)); break;
+                // 주력 제품 순위 조회 그러면 어떻게 해야 할까?
                 case 2 : categoryController.selectCategoryList(inputSelectOption(selectMenu)); break;
                 case 3 : categoryController.registNewCategory(inputNewCategoryInfo()); break;
                 case 4 : categoryController.modifyCategoryName(inputModifyCategoryInfo()); break;
