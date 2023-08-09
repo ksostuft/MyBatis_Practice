@@ -90,10 +90,10 @@
                          DISCOUNT_RATE = '1000'
                      </when>
                      <when test="option == 'newProduct'">
-                         RELEASE_DATE >
+                         RELEASE_DATE >= (SELECT LAST_DAY(NOW() - interval 1 month) + interval 1 DAY  FROM DUAL)
                      </when>
                      <when test="option == 'nonProduction'">
-                         PRODUCT_NAME LIKE CONCAT('%', #{value}, '%')
+                         PRODUCTION_STATUS = 'N'
                      </when>
                  </choose>
              </where>
