@@ -38,6 +38,20 @@ public class ProductPrint {
         // 3. 성공메시지를 출력하는 메소드
         //    (조건) 성공코드를 전달받아 성공을 알리는 메시지를 출력하세요.
 
+        String successMessage = "";
+
+        switch (successCode) {
+            case "insert":
+                System.out.println("신규 제품 등록에 성공했습니다.");
+                break;
+            case "update":
+                System.out.println("제품 정보 변경에 성공했습니다.");
+                break;
+            case "delete":
+                System.out.println("제품 정보 삭제에 성공했습니다.");
+                break;
+
+        }
     }
 
     public void printErrorMessage(String errorCode) {
@@ -50,6 +64,15 @@ public class ProductPrint {
                 break;
             case "selectOne":
                 System.out.println("검색에 맞는 결과를 찾는데 실패했습니다.");
+            case "insert" :
+                System.out.println("신규 제품 추가에 실패했습니다.");
+                break;
+            case "update" :
+                System.out.println("제품 정보 변경에 실패했습니다. ");
+                break;
+            case "delete":
+                System.out.println("제품 정보 삭제에 실패했습니다.");
+                break;
         }
     }
 

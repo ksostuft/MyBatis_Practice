@@ -1,6 +1,7 @@
 package com.management.category.model.dao;
 
 import com.management.category.model.dto.CategoryDTO;
+import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
 
@@ -16,31 +17,45 @@ public class CategoryDAOProvider {
         //          예를 들어, PRODUCT_INFO 테이블에 제품분류가 A인 제품이 10개, B인 제품이 4개, C인 제품이 13개 있다면
         //          제품분류 순위는 C > A > B 입니다. (단, 제품 갯수가 0개인 제품분류는 목록에 출력되지 않아도 됩니다.)
         //    아래 작성된 return null은 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return null;
 
+        if(parameter.get("option").equals("allList")) {
+            return new SQL()
+                    .SELECT("CATEGORY_CODE")
+                    .SELECT("CATEGORY_NAME")
+                    .FROM("PRODUCT_CATEGORY").toString();
+        }
+        return new SQL()
+                .SELECT("CATEGORY_CODE")
+                .SELECT("CATEGORY_NAME")
+                .FROM("PRODUCT_CATEGORY").toString();
+        /* 동적 쿼리는 조건만 바뀌어야 한다.*/
     }
 
-    public String insertCategory(CategoryDTO category) {
+    public String registNewCategory(CategoryDTO category) {
 
         // 2. Provider를 활용하여 제품분류를 등록하는 코드를 작성하세요.
         //    아래 작성된 return null은 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return null;
-
+        return new SQL()
+                .INSERT_INTO("PRODUCT_CATEGORY")
+                .VALUES("CATEGORY_NAME", "#{ categoryName }").toString();
     }
 
-    public String updateCategory(CategoryDTO category) {
+    public String modifyCategoryName(CategoryDTO category) {
 
         // 3. Provider를 활용하여 제품분류명을 수정하는 코드를 작성하세요.
         //    아래 작성된 return null은 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return null;
-
+        return new SQL()
+                .UPDATE("PRODUCT_CATEGORY")
+                .SET("CATEGORY_NAME = #{ categoryName }")
+                .WHERE("CATEGORY_CODE = #{ categoryCode }").toString();
     }
 
     public String deleteCategory(Map<String, String> parameter) {
 
         // 4. Provider를 활용하여 제품분류를 삭제하는 코드를 작성하세요.
         //    아래 작성된 return null은 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return null;
-
+        return new SQL()
+                .DELETE_FROM("PRODUCT_CATEGORY")
+                .WHERE("CATEGORY_CODE = #{ categoryCode }").toString();
     }
 }

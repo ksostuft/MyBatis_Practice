@@ -63,7 +63,7 @@
                      '백화점'이면 할인율이 0%인 제품, '아울렛'이면 할인율이 1% 이상인 제품을 조회합니다.
             (참고 3) 이달의 신상품 조희의 경우, 출시일이 이번 달인 제품(예를 들어, 현재 기준이면 2023년 5월 출시 제품)울 조회합니다. -->
 
-    <select id="selectProductByCondition" resultMap="productResultMap">
+    <select id="selectProductByCondition" parameterType="_int" resultMap="productResultMap">
         SELECT
             PRODUCT_CODE
              ,PRODUCT_NAME
@@ -101,18 +101,47 @@
 
     <!-- 5. 제품 정보를 등록하는 쿼리를 작성하세요.
             (쿼리id) insertProduct -->
-    <insert id="insertProduct" >
-        INSERT INTO PRODUCT_INFO
+    <insert id="insertProduct" parameterType="com.management.product.model.dto.ProductDTO">
+        INSERT INTO PRODUCT_INFO (
+                                 PRODUCT_NAME
+                                 ,ORIGIN_COST
+                                 ,RELEASE_DATE
+                                 ,DISCOUNT_RATE
+                                 ,SALES_QUANTITY
+                                 ,STOCK_QUANTITY
+                                 ,CATEGORY_CODE
+                                 ,PRODUCTION_STATUS
+                                 )
+        VALUES (
+                #{ productName }
+                ,#{ originCost }
+                ,#{ releaseDate }
+                ,#{ discountRate }
+                ,#{ salesQuantity }
+                ,#{ stockQuantity }
+                ,#{ categoryCode }
+                ,#{ productionStatus }
+               )
     </insert>
     <!-- 6. 사용자가 수정을 원하는 데이터만 수정하도록 Dynamic Query를 활용한 쿼리를 작성하세요.
             (쿼리id) updateProduct -->
-    <update id="updateProduct">
-        UPDATE
+    <update id="updateProduct" parameterType="com.management.product.model.dto.ProductDTO">
+        UPDATE PRODUCT_INFO
+            SET PRODUCT_NAME = #{ productName }2
+              ,ORIGIN_COST = #{ originCost }
+              ,RELEASE_DATE = #{ releaseDate }
+              ,DISCOUNT_RATE = #{ discountRate }
+              ,SALES_QUANTITY = #{ salesQuantity }
+              ,STOCK_QUANTITY = #{ stockQuantity }
+              ,CATEGORY_CODE = #{ categoryCode }
+              ,PRODUCTION_STATUS = #{ productionStatus }
+         WHERE PRODUCT_CODE = #{ productCode }
     </update>
     <!-- 7. 제품 정보를 삭제하는 쿼리를 작성하세요.
             (쿼리id) deleteProduct -->
     <delete id="deleteProduct">
-        DELETE FROM PRODUCT_INFO
-        WHERE
+        DELETE
+          FROM PRODUCT_INFO
+         WHERE PRODUCT_CODE = #{ productCode }
     </delete>
 </mapper>

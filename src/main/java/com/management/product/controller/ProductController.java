@@ -63,6 +63,15 @@ public class ProductController {
         //　  (조건 2) Service 객체를 호출하여 등록을 수행하고, 결과를 boolean 값으로 return 받으세요.
         //    (조건 3) insert가 정상적으로 수행된 경우, Print 객체를 통해 등록 성공했다는 성공 메세지를 출력하세요.
         //    (조건 4) insert가 정상적으로 수행되지 않은 경우, Print 객체를 통해 등록 실패했다는 오류 메세지를 출력하세요.
+        product.setReleaseDate(product.getReleaseDate().replace("-", ""));
+        product.setProductionStatus("Y");
+        product.setSalesQuantity("0");
+        boolean result = productService.registNewProduct(product);
+        if(result) {
+            productPrint.printSuccessMessage("insert");
+        } else {
+            productPrint.printErrorMessage("insert");
+        }
 
     }
 
@@ -74,7 +83,13 @@ public class ProductController {
         //　  (조건 2) Service 객체를 호출하여 수정을 수행하고, 결과를 boolean 값으로 return 받으세요.
         //    (조건 3) update가 정상적으로 수행된 경우, Print 객체를 통해 수정 성공했다는 성공 메세지를 출력하세요.
         //    (조건 4) update가 정상적으로 수행되지 않은 경우, Print 객체를 통해 수정 실패했다는 오류 메세지를 출력하세요.
-
+        product.setReleaseDate(product.getReleaseDate().replace("-", ""));
+        boolean result = productService.modifyProductInfo(product);
+        if(result) {
+            productPrint.printSuccessMessage("update");
+        } else {
+            productPrint.printErrorMessage("update");
+        }
     }
 
     public void deleteProduct(Map<String, String> parameter) {
@@ -83,6 +98,11 @@ public class ProductController {
         //    (조건 1) Service 객체를 호출하여 수정을 수행하고, 결과를 boolean 값으로 return 받으세요.
         //    (조건 2) delete가 정상적으로 수행된 경우, Print 객체를 통해 삭제 성공했다는 성공 메세지를 출력하세요.
         //    (조건 3) delete가 정상적으로 수행되지 않은 경우, Print 객체를 통해 삭제 실패했다는 오류 메세지를 출력하세요.
-
+        boolean result = productService.deleteProduct(parameter);
+        if(result) {
+            productPrint.printSuccessMessage("delete");
+        } else {
+            productPrint.printErrorMessage("delete");
+        }
     }
 }

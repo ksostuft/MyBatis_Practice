@@ -22,6 +22,6 @@
         </environment>
     </environments>
     <mappers>
-        <package name="com.management.product.model.dao" />
+        <mapper resource="com/management/product/model/dao/ProductDAO.xml" />
     </mappers>
 </configuration>

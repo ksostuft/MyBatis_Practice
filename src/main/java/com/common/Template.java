@@ -1,5 +1,6 @@
 package com.common;
 
+import com.management.category.model.dao.CategoryDAO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,6 +19,7 @@ public class Template {
             try {
                 inputStream = Resources.getResourceAsStream(resource);
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+                sqlSessionFactory.getConfiguration().addMapper(CategoryDAO.class);
             } catch (IOException e) {
                 e.printStackTrace();
             }
