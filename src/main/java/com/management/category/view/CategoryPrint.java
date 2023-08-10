@@ -22,7 +22,7 @@ public class CategoryPrint {
         if(parameter.get("option").equals("allList")) {
             System.out.println("전체 목록 조회입니다.");
         } else {
-            System.out.println("순위별 제품 분류 조회입니다.");
+            System.out.println("순위별 제품 분류 조회입니다. (가장 위에 있는 게 1위)");
         }
     }
 

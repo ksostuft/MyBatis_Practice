@@ -18,17 +18,16 @@ public class CategoryDAOProvider {
         //          제품분류 순위는 C > A > B 입니다. (단, 제품 갯수가 0개인 제품분류는 목록에 출력되지 않아도 됩니다.)
         //    아래 작성된 return null은 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
 
-        if(parameter.get("option").equals("allList")) {
-            return new SQL()
-                    .SELECT("CATEGORY_CODE")
-                    .SELECT("CATEGORY_NAME")
-                    .FROM("PRODUCT_CATEGORY").toString();
+        /*if(parameter.get("option").equals("allList"))*/
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("select c.CATEGORY_CODE, CATEGORY_NAME FROM product_category c ");
+        if(parameter.get("option").equals("orderList")) {
+            sb.append("join product_info i on c.CATEGORY_CODE = i.CATEGORY_CODE group by c.CATEGORY_CODE order by count(c.CATEGORY_CODE) desc");
         }
-        return new SQL()
-                .SELECT("CATEGORY_CODE")
-                .SELECT("CATEGORY_NAME")
-                .FROM("PRODUCT_CATEGORY").toString();
+        return sb.toString();
         /* 동적 쿼리는 조건만 바뀌어야 한다.*/
+        /*select CATEGORY_NAME, count(c.CATEGORY_CODE) fre from product_category c join product_info i on c.CATEGORY_CODE = i.CATEGORY_CODE group by c.CATEGORY_CODE order by fre desc;*/
     }
 
     public String registNewCategory(CategoryDTO category) {
