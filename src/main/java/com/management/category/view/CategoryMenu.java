@@ -29,7 +29,6 @@ public class CategoryMenu {
 
             switch (selectMenu) {
                 case 1 : categoryController.selectCategoryList(inputSelectOption(selectMenu)); break;
-                // 주력 제품 순위 조회 그러면 어떻게 해야 할까?
                 case 2 : categoryController.selectCategoryList(inputSelectOption(selectMenu)); break;
                 case 3 : categoryController.registNewCategory(inputNewCategoryInfo()); break;
                 case 4 : categoryController.modifyCategoryName(inputModifyCategoryInfo()); break;
@@ -64,7 +63,6 @@ public class CategoryMenu {
         String categoryName = sc.nextLine();
 
         CategoryDTO categoryDTO = new CategoryDTO();
-        // 주석을 지우고 받아온 정보를 categoryDTO 객체에 setting 하세요.
         categoryDTO.setCategoryName(categoryName);
         return categoryDTO;
     }
@@ -80,7 +78,6 @@ public class CategoryMenu {
         System.out.println("===================================");
 
         CategoryDTO categoryDTO = new CategoryDTO();
-        // 주석을 지우고 받아온 정보를 categoryDTO 객체에 setting 하세요.
         categoryDTO.setCategoryCode(categoryCode);
         categoryDTO.setCategoryName(categoryName);
         return categoryDTO;

@@ -3,13 +3,6 @@
 <configuration>
     <properties resource="config/connection-info.properties "/>
 
-    <!-- 주석을 지우고 mybatis 설정 파일 내용을 작성하세요. -->
-
-    <!-- SqlMappers는 가명이다. 나중에 바꿀 수 있다.-->
-   <!-- <typeAliases>
-        <typeAlias type="com.management.product.model.dao.ProductDAO" alias="SqlMappers" />
-    </typeAliases>-->
-
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC"/>
