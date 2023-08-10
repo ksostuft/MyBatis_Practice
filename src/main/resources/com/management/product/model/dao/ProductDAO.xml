@@ -127,7 +127,7 @@
             (쿼리id) updateProduct -->
     <update id="updateProduct" parameterType="com.management.product.model.dto.ProductDTO">
         UPDATE PRODUCT_INFO
-            SET PRODUCT_NAME = #{ productName }2
+            SET PRODUCT_NAME = #{ productName }
               ,ORIGIN_COST = #{ originCost }
               ,RELEASE_DATE = #{ releaseDate }
               ,DISCOUNT_RATE = #{ discountRate }
