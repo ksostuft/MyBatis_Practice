@@ -117,6 +117,7 @@
             </if>
             WHERE PRODUCT_CODE = #{ productCode }
         </set>
+
     </update>
 
     <delete id="deleteProduct">
