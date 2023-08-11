@@ -95,25 +95,25 @@
                 PRODUCT_NAME = #{ productName }
             </if>
             <if test="originCost != 'SKIP'">
-                ORIGIN_COST = #{ originCost }
+                ,ORIGIN_COST = #{ originCost }
             </if>
             <if test="releaseDate != 'SKIP'">
-                RELEASE_DATE = #{ releaseDate }
+                ,RELEASE_DATE = #{ releaseDate }
             </if>
             <if test="discountRate != 'SKIP'">
-                DISCOUNT_RATE = #{ discountRate }
+                ,DISCOUNT_RATE = #{ discountRate }
             </if>
             <if test="salesQuantity != 'SKIP'">
-                SALES_QUANTITY = #{ salesQuantity }
+                ,SALES_QUANTITY = #{ salesQuantity }
             </if>
             <if test="stockQuantity != 'SKIP'">
-                STOCK_QUANTITY = #{ stockQuantity }
+                ,STOCK_QUANTITY = #{ stockQuantity }
             </if>
             <if test="categoryCode != 'SKIP'">
-                CATEGORY_CODE = #{ categoryCode }
+                ,CATEGORY_CODE = #{ categoryCode }
             </if>
             <if test="productionStatus != 'SKIP'">
-                PRODUCTION_STATUS = #{ productionStatus }
+                ,PRODUCTION_STATUS = #{ productionStatus }
             </if>
             WHERE PRODUCT_CODE = #{ productCode }
         </set>
